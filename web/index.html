@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title> Barnowl Stuffy Demo </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style/bootstrap.min.css">
+    <link rel="stylesheet" href="style/reelyactive.css">
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/ui-bootstrap-tpls.min.js"></script>
+    <script type="text/javascript" src="js/socket.io.js"></script>
+    <script type="text/javascript" src="js/Tone.min.js"></script>
+    <script type="text/javascript" src="js/barnowl-stuffy-demo.js"></script>
+  </head>
+  <body ng-app="barnowl-stuffy-demo">
+    <div ng-controller="ExperienceCtrl">
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle"
+                  ng-init="navCollapsed = true"
+                  ng-click="navCollapsed = !navCollapsed">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://www.reelyactive.com">
+            <strong>reely</strong>Active
+          </a>
+        </div>
+        <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'"
+             ng-click="navCollapsed = true">
+          <ul class="nav navbar-nav navbar-right">
+          </ul>
+        </div>
+      </nav>
+      <div class="container-fluid">
+        <img src="images/blank.jpg" class="img-responsive center-block"
+             ng-if="state === null">
+        <img src="images/level.jpg" class="img-responsive center-block"
+             ng-if="state === 'level'">
+        <img src="images/pitchup.jpg" class="img-responsive center-block"
+             ng-if="state === 'pitchup'">
+        <img src="images/pitchdown.jpg" class="img-responsive center-block"
+             ng-if="state === 'pitchdown'">
+        <img src="images/rollright.jpg" class="img-responsive center-block"
+             ng-if="state === 'rollright'">
+        <img src="images/rollleft.jpg" class="img-responsive center-block"
+             ng-if="state === 'rollleft'">
+      </div>
+      <p class="text-center">
+        <tt>{{id}}</tt> &nbsp; Pitch: {{pitch}} &nbsp; Roll: {{roll}}
+      </p>
+      <footer class="footer">
+        <a href="https://github.com/reelyactive/barnowl-stuffy-demo"> barnowl-stuffy-demo </a>
+        &nbsp; | &nbsp;
+        <a href="http://www.reelyactive.com"
+           uib-tooltip="We believe in an open Internet of Things"
+           tooltip-placement="right">
+          &copy; reelyActive 2017
+        </a>
+      </footer>
+    </div>
+  </body>
+</html>
